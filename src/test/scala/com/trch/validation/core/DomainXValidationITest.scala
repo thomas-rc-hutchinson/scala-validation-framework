@@ -1,6 +1,5 @@
 package com.trch.validation.core
 
-import core.{Failure, OK, Validation}
 import org.junit.Assert._
 import org.junit.Test
 /**

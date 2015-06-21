@@ -1,7 +1,6 @@
 package com.trch.validation.core
 
-import core.IntValidation._
-import core.Validation
+import com.trch.validation.core.Validation
 import org.junit.Assert._
 import org.junit.Test
 /**

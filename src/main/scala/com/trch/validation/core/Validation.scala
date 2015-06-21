@@ -1,5 +1,4 @@
-package core
-
+package com.trch.validation.core
 
 /**
  * Created by Tom on 21/06/2015.
@@ -14,7 +13,7 @@ class Validation[T](test : (T => Result)*) {
 
 abstract class Result();
 abstract class Failure() extends Result;
-case class OK() extends Result;
+final case class OK() extends Result;
 
 object Validation {
   def apply[T](test : (T => Result)*) = new Validation(test : _*)
