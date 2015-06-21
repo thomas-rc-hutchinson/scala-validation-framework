@@ -5,11 +5,11 @@ package com.trch.validation.core
  */
 object IntValidation {
 
-  final case class IntToBig() extends Failure;
-  final case class IntToSmall() extends Failure;
+  final case class IntToBig(max:Int) extends Failure;
+  final case class IntToSmall(min:Int) extends Failure;
 
-  final def noGreaterThan(size : Int) : (Int => Result) = (int : Int) => if(int > size) IntToBig() else OK()
-  final def noLessThan(size : Int) = (int : Int) => if(int < size) IntToSmall() else OK()
+  final def noGreaterThan(size : Int) : (Int => Result) = (int : Int) => if(int > size) IntToBig(size) else OK()
+  final def noLessThan(size : Int) = (int : Int) => if(int < size) IntToSmall(size) else OK()
 
 
 }

@@ -1,5 +1,6 @@
 package com.trch.validation.core
 
+import com.trch.validation.core.IntValidation.{IntToSmall, IntToBig}
 import org.junit.Assert._
 import org.junit.Test
 /**
@@ -9,10 +10,10 @@ class IntValidationUTest {
 
   @Test
   def test(): Unit = {
-    assertEquals(IntToBig(), IntValidation.noGreaterThan(1)(2))
+    assertEquals(IntToBig(1), IntValidation.noGreaterThan(1)(2))
     assertEquals(OK(), IntValidation.noGreaterThan(1)(1))
 
-    assertEquals(IntToSmall(), IntValidation.noLessThan(1)(0))
+    assertEquals(IntToSmall(1), IntValidation.noLessThan(1)(0))
     assertEquals(OK(), IntValidation.noLessThan(1)(1))
   }
 }
