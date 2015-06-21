@@ -24,8 +24,8 @@ val selectionId = 0
     val validator = Validation(noGreaterThan(5), noLessThan(1))
     val failures : List[Failure] = validator.validate(selectionId);
     failures.map {
-      case IntToBig() => println(s"selectionId [$selectionId] to big")
-      case IntToSmall() => println(s"selectionId [$selectionId] to small")
+      case IntToBig(max) => println(s"selectionId [$selectionId] to big, maximum size is $max")
+      case IntToSmall(min) => println(s"selectionId [$selectionId] to small, smallest size is $min")
     }
 ```
 
