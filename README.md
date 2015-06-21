@@ -6,8 +6,8 @@ Often I read Java code which couples validation with code that acts upon the res
 e.g.
 ```Java
 public void assertSelectionIdValid(int id){
-        if(id > 5) throw new SelectionIdToBigException();
-     	if(id < 1) throw new SelectionIdToSmallException();     
+        if(id > 5) throw new SelectionIdToBigException(5);
+     	if(id < 1) throw new SelectionIdToSmallException(1);     
     }
     
 assertSelectionIdValid(0)    
