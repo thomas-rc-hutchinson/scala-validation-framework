@@ -2,7 +2,7 @@
 
 ## Motivation
 
-Often or not I read Java code which couples validation with code that acts upon the results 
+Often I read Java code which couples validation with code that acts upon the results 
 e.g.
 ```Java
 public void assertSelectionIdValid(int id){
