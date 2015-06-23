@@ -17,4 +17,11 @@ final case class OK() extends Result;
 
 object Validation {
   def apply[T](test : (T => Result)*) = new Validation(test : _*)
+  
+  def union[T](test : (T => Result)*) : (T => Result) =
+    test.reduce((firstTest,secondTest) => (value : T) => firstTest(value) match {
+      case _:OK => secondTest(value)
+      case failure:Failure => failure
+    })
+  
 }
