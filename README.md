@@ -38,14 +38,23 @@ You can use this framework to apply validation to classes in your domain e.g.
     //Define failures. Each one must extend Failure
     case class TooYoung() extends Failure
     case class BadName() extends Failure
+    case class TooOld() extends Failure         
 
     //If fail return your failure, if it passed return OK()
     val tooYoung = (user : User) => if(user.age < 18) TooYoung() else OK()
     val badName = (user : User) => if(user.name.equals("tom")) BadName() else OK()
+    val tooOld = (user : User) => if(user.age > 99) TooOld() else OK()
 
     //Plug in your validations, call validate with the instance and assert both failures are returned
     assertEquals(List(BadName(), TooYoung()), Validation(badName, tooYoung).validate(User("tom", 17)))
 ```
+
+Build more complex validations...
+```Scala
+//union transform var-args of test to a test. If t1 is a failure t2 won't be executed and so on...
+assertEquals(TooOld(), Validation(union(tooYoung,tooOld), badName).validate(User("thomas", 111))
+```
+
 
 You can easily test the validations that you write. For inspiration see the test classes that I wrote.
 
